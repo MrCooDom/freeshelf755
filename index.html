@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10131a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="FreeShelf">
+<link rel="manifest" href="manifest.webmanifest">
+<title>FreeShelf — каталог приложений</title>
+<style>
+:root{color-scheme:dark;--bg:#0b0e14;--panel:#151a24;--muted:#9ba6ba;--text:#f5f7fb;--accent:#8b9cff;--line:#262d3b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#1b2440 0,#0b0e14 55%);font:16px -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);min-height:100vh}
+main{max-width:760px;margin:auto;padding:calc(22px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
+header{display:flex;align-items:center;gap:12px;margin-bottom:22px}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,#a5b4fc,#6d5dfc);display:grid;place-items:center;color:#11152b;font-size:25px;font-weight:900}
+h1{font-size:25px;margin:0} .sub{color:var(--muted);font-size:13px;margin-top:4px}
+.notice{background:#191f2d;border:1px solid #343d52;border-radius:16px;padding:13px 14px;font-size:13px;line-height:1.45;color:#dbe2f5;margin-bottom:20px}
+.search{width:100%;background:#171c27;border:1px solid var(--line);border-radius:14px;padding:14px 15px;color:var(--text);font-size:16px;outline:none}
+.filters{display:flex;gap:8px;overflow:auto;padding:12px 0 18px}.filter{white-space:nowrap;border:1px solid #343b4b;background:#151a24;color:#cbd3e5;border-radius:999px;padding:9px 13px;font-size:13px}.filter.active{background:#dfe4ff;color:#14182a;border-color:#dfe4ff;font-weight:700}
+.section{display:flex;align-items:center;justify-content:space-between;margin:8px 0 12px}.section h2{font-size:17px;margin:0}.count{font-size:12px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:10px}.app{display:flex;gap:13px;align-items:center;background:rgba(21,26,36,.94);border:1px solid var(--line);border-radius:17px;padding:13px}
+.appicon{width:54px;height:54px;border-radius:15px;background:#28334d;display:grid;place-items:center;font-size:25px;flex-shrink:0}.appbody{min-width:0;flex:1}.appname{font-weight:700;font-size:15px}.appdesc{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}.tag{display:inline-block;font-size:10px;color:#bdc8ff;background:#272f4b;border-radius:6px;padding:3px 6px;margin-top:6px}
+.open{border:0;background:#e4e8ff;color:#171a2a;border-radius:999px;padding:9px 13px;font-size:12px;font-weight:800;text-decoration:none;flex-shrink:0}
+.empty{display:none;text-align:center;color:var(--muted);padding:30px 10px}.footer{font-size:11px;color:#78839a;line-height:1.5;margin-top:24px;text-align:center}
+@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}.app{align-items:flex-start}.open{margin-top:3px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="logo">F</div><div><h1>FreeShelf</h1><div class="sub">Каталог бесплатных приложений</div></div></header>
+<div class="notice"><strong>Первый прототип.</strong> Кнопки открывают поиск приложения в официальном App Store. Эта веб-версия не устанавливает IPA-файлы и не обходит ограничения iOS.</div>
+<input id="search" class="search" type="search" placeholder="Поиск приложений…" aria-label="Поиск приложений">
+<nav class="filters" aria-label="Категории">
+<button class="filter active" data-category="Все">Все</button>
+<button class="filter" data-category="Полезное">Полезное</button>
+<button class="filter" data-category="Фото">Фото</button>
+<button class="filter" data-category="Музыка">Музыка</button>
+<button class="filter" data-category="Навигация">Навигация</button>
+</nav>
+<div class="section"><h2>Подборка</h2><span class="count" id="count"></span></div>
+<div class="grid" id="apps">
+<article class="app" data-name="Google Maps Карты" data-category="Навигация"><div class="appicon">🗺️</div><div class="appbody"><div class="appname">Google Maps</div><div class="appdesc">Карты, маршруты и поиск мест</div><span class="tag">Навигация</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=Google%20Maps">Открыть</a></article>
+<article class="app" data-name="VLC медиаплеер видео" data-category="Полезное"><div class="appicon">▶️</div><div class="appbody"><div class="appname">VLC media player</div><div class="appdesc">Медиаплеер для поддерживаемых форматов</div><span class="tag">Полезное</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=VLC%20media%20player">Открыть</a></article>
+<article class="app" data-name="Snapseed фото редактор" data-category="Фото"><div class="appicon">📷</div><div class="appbody"><div class="appname">Snapseed</div><div class="appdesc">Редактирование фотографий</div><span class="tag">Фото</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=Snapseed">Открыть</a></article>
+<article class="app" data-name="Shazam музыка распознавание" data-category="Музыка"><div class="appicon">🎵</div><div class="appbody"><div class="appname">Shazam</div><div class="appdesc">Распознавание музыки вокруг</div><span class="tag">Музыка</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=Shazam">Открыть</a></article>
+<article class="app" data-name="Documents файловый менеджер" data-category="Полезное"><div class="appicon">📁</div><div class="appbody"><div class="appname">Documents</div><div class="appdesc">Работа с файлами и документами</div><span class="tag">Полезное</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=Documents%20Readdle">Открыть</a></article>
+<article class="app" data-name="Firefox браузер" data-category="Полезное"><div class="appicon">🌐</div><div class="appbody"><div class="appname">Firefox</div><div class="appdesc">Альтернативный браузер</div><span class="tag">Полезное</span></div><a class="open" target="_blank" rel="noopener" href="https://apps.apple.com/search?term=Firefox">Открыть</a></article>
+</div>
+<div class="empty" id="empty">Ничего не найдено. Попробуй другой запрос.</div>
+<div class="footer">FreeShelf · Демонстрационный каталог. Доступность приложений и их бесплатность проверяй на странице App Store. Названия и товарные знаки принадлежат их владельцам.</div>
+</main>
+<script>
+const search=document.getElementById('search'), cards=[...document.querySelectorAll('.app')], filters=[...document.querySelectorAll('.filter')], count=document.getElementById('count'), empty=document.getElementById('empty');
+let category='Все';
+function render(){const q=search.value.trim().toLowerCase();let shown=0;cards.forEach(c=>{const ok=(category==='Все'||c.dataset.category===category)&&c.dataset.name.toLowerCase().includes(q);c.style.display=ok?'flex':'none';if(ok)shown++});count.textContent=shown+' прилож.';empty.style.display=shown?'none':'block'}
+search.addEventListener('input',render);filters.forEach(b=>b.addEventListener('click',()=>{category=b.dataset.category;filters.forEach(x=>x.classList.toggle('active',x===b));render()}));render();
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+</script>
+</body>
+</html>

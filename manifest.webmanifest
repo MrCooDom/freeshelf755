@@ -1,0 +1,10 @@
+{
+  "name": "FreeShelf — каталог приложений",
+  "short_name": "FreeShelf",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0b0e14",
+  "theme_color": "#10131a",
+  "lang": "ru",
+  "description": "Каталог бесплатных приложений с переходом к официальным источникам."
+}
